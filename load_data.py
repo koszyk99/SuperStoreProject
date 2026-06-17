@@ -10,4 +10,9 @@ df = pd.read_csv('Global_Superstore2.csv', encoding='cp1250')
 # print(df.info())
 
 # Display first 5 rows to investigate values
-print(df.head(5))
+# print(df.head(5))
+
+# Convert date columns into datetime
+df['Order Date'] = pd.to_datetime(df['Order Date'])
+df['Ship Date'] = pd.to_datetime(df['Ship Date'])
+print(df.info())
