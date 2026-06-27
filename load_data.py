@@ -32,13 +32,17 @@ df['Postal Code'] = df['Postal Code'].astype(str).str.replace('.0', '', regex=Fa
 df['Postal Code'] = df['Postal Code'].replace(['nan', 'NaN', 'NAN', 'None', ''], np.nan)
 
 print('-' * 48)
-print("[TEST] Negative financial values test - verify Sales and Quantity columns")
+print("[TEST] Negative financial values test - verify Sales and Quantity columns and check any duplicated data")
 print('Negative Sales number:', (df['Sales'] <= 0).sum())
 print('Negative Quantity number:', (df['Quantity'] <= 0).sum())
+print("Number of duplicated data:", df.duplicated().sum())
 print('-' * 48)
 
 # If the above test returns negative values, this line of code will clear them - we overwrite DataFrame
 df = df[(df['Sales'] > 0) & (df['Quantity'] > 0)]
+
+# Remove duplicated data
+df = df.drop_duplicates()
 
 # print(df.head(5))
 
