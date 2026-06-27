@@ -55,3 +55,6 @@ df = df.drop_duplicates()
 # print(df.dtypes)
 
 # print(df[['Shipment Time', 'Order Date', 'Ship Date']].describe())
+
+df.to_excel('Global_Superstore_CLEANED.xlsx', index=False, sheet_name='Cleaned_Data')
+print('Success! The cleaned file has been saved.')
